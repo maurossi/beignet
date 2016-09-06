@@ -120,5 +120,12 @@ $(OPTIONAL_EGL_LIBRARY) \
 libhardware
 
 #LOCAL_CLANG := true
-include external/libcxx/libcxx.mk
+LOCAL_C_INCLUDES := \
+	external/libcxx/include \
+	$(LOCAL_C_INCLUDES)
+LOCAL_CFLAGS += -D_USING_LIBCXX
+LOCAL_CPPFLAGS += -nostdinc++
+LOCAL_LDFLAGS += -nodefaultlibs
+LOCAL_LDLIBS += -lm -lc
+LOCAL_SHARED_LIBRARIES += libc++
 include $(BUILD_SHARED_LIBRARY)

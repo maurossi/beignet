@@ -219,7 +219,14 @@ LOCAL_CFLAGS := $(SURDIR_CFLAGS)
 LOCAL_MODULE := libutests
 
 #LOCAL_CLANG := true
-include external/libcxx/libcxx.mk
+LOCAL_C_INCLUDES := \
+	external/libcxx/include \
+	$(LOCAL_C_INCLUDES)
+LOCAL_CFLAGS += -D_USING_LIBCXX
+LOCAL_CPPFLAGS += -nostdinc++
+LOCAL_LDFLAGS += -nodefaultlibs
+LOCAL_LDLIBS += -lm -lc
+LOCAL_SHARED_LIBRARIES += libc++
 include $(BUILD_SHARED_LIBRARY)
 
 
@@ -243,6 +250,12 @@ LOCAL_MODULE_STEM_64 := utest_run-x86_64
 
 
 #LOCAL_CLANG := true
-include external/libcxx/libcxx.mk
+LOCAL_C_INCLUDES := \
+	external/libcxx/include \
+	$(LOCAL_C_INCLUDES)
+LOCAL_CFLAGS += -D_USING_LIBCXX
+LOCAL_CPPFLAGS += -nostdinc++
+LOCAL_LDFLAGS += -nodefaultlibs
+LOCAL_LDLIBS += -lm -lc
+LOCAL_SHARED_LIBRARIES += libc++
 include $(BUILD_EXECUTABLE)
-
