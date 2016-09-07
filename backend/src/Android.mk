@@ -175,7 +175,8 @@ TBLGEN_TABLES :=    \
                  DiagnosticCommonKinds.inc   \
                  DiagnosticDriverKinds.inc       \
                  DiagnosticFrontendKinds.inc     \
-                 DiagnosticSemaKinds.inc
+                 DiagnosticSemaKinds.inc \
+                 StmtNodes.inc
 
 LOCAL_SRC_FILES = $(BACKEND_SRC_FILES)
 include $(CLANG_HOST_BUILD_MK)
